@@ -1,0 +1,129 @@
+% compile this way
+% pdflatex -shell-escape reference.tex  
+
+\documentclass[11pt]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[spanish]{babel}
+\decimalpoint
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[margin=0.6in,landscape]{geometry}
+\usepackage{fancyhdr}
+\usepackage[inline]{enumitem}
+\usepackage{float}
+\usepackage{cancel}
+\usepackage{bigints}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{listingsutf8}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{apacite}
+\usepackage{minted}
+\usepackage{tcolorbox}
+\usepackage{multicol}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+\twocolumn
+\usepackage{tipa}
+\pagestyle{fancy}
+\newcommand{\xvdash}[1]{%
+	\vdash^{\mkern-10mu\scriptscriptstyle\rule[-.9ex]{0pt}{0pt}#1}%
+}
+\setlength{\headheight}{15pt} 
+\lhead{Reference}
+\rhead{\thepage}
+\lfoot{ESCOM-IPN}
+\renewcommand{\footrulewidth}{0.5pt}
+\setlength{\parskip}{0.5em}
+\newcommand{\ve}[1]{\overrightarrow{#1}}
+\newcommand{\abs}[1]{\left\lvert #1 \right\lvert}
+\newcommand{\blank}{\text{\textcrb}}
+\title{Reference}
+
+\lstdefinestyle{customc}{
+	belowcaptionskip=1\baselineskip,
+	breaklines=true,
+	frame=L,
+	xleftmargin=\parindent,
+	language=C++,
+	showstringspaces=false,
+	basicstyle=\ttfamily,
+	keywordstyle=\bfseries\color{green!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	identifierstyle=\color{blue},
+	numbers=left,
+	stringstyle=\color{orange},
+}
+\newcommand{\genstirlingI}[3]{%
+	\genfrac{[}{]}{0pt}{#1}{#2}{#3}%
+}
+\newcommand{\genstirlingII}[3]{%
+	\genfrac{\{}{\}}{0pt}{#1}{#2}{#3}%
+}
+\newcommand{\genEuler}[3]{%
+	\genfrac{<}{>}{0pt}{#1}{#2}{#3}%
+}
+\newcommand{\stirlingI}[2]{\genstirlingI{}{#1}{#2}}
+\newcommand{\stirlingII}[2]{\genstirlingII{}{#1}{#2}}
+\newcommand{\euler}[2]{\genEuler{}{#1}{#2}}
+
+\begin{document}
+	% \begin{multicols*}{2}
+		
+
+			\section{Template}
+			\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{template.cpp}
+			\section{Data Structure}
+				\subsection{Segment tree with lazy}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/SegmentTree.cpp}
+				\subsection{SQRT and MO's}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/sqrtDecom.cpp}
+				\subsection{Convex Hull Trick}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/ConvexHullTrick.cpp}
+				\subsection{Field extension}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/EX.cpp}
+				\subsection{BIT}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/BIT.cpp}
+				\subsection{merge sort tree}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/mergeSortTree.cpp}
+			\section{FFT}
+				\subsection{FFT}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{FFT/FFT.cpp}
+				% \subsection{NTT}
+				% 	\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{FFT/NTT.cpp}
+			\section{Binary Search}
+				\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{algorithms/binarySearch.cpp}
+				\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{algorithms/ternarySearch.cpp}
+			\section{Flujos}
+				\subsubsection{Dinic}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Flows/Dinic.cpp}
+				\subsubsection{Ford-Fulkerson}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Flows/Ford-Fulkerson.cpp}
+			\section{Strings}
+				\subsection{aho-corasik}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Strings/Aho-corasik.cpp}
+			\section{Math}
+				\subsection{nCr}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Math/nCr.cpp}
+				\subsection{Discrete Root}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Math/discreteRoot.cpp}
+					
+			% \inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/DinamicSegmentTree.cpp}
+			% \inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/simpleSegmentTree.cpp}
+			% \inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/FFT.cpp}
+			% \inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/NTT.cpp}
+			
+		
+		
+	% \end{multicols*}
+	
+\end{document}
