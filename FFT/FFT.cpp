@@ -42,12 +42,19 @@ vector<ll> multiply(vector<ll> const& a, vector<ll> const& b) {
     for (int i = 0; i < n; i++) result[i] = round(fa[i].real());
     return result;
 }
-
 /* if it's numbers and not polynomials, we have to normalise */
 void normalise(vll &ans) {
-	for (ll i = 0, carry = 0; i < ans.size(); ++i) {
+	int  carry = 0;
+	for (ll i = 0; i < ans.size(); ++i) {
 		ans[i] += carry;
 		carry = ans[i] / 10;
 		ans[i] %= 10;
 	}
+	if(carry > 0) ans.pb(carry);
+	int t = ans.size();
+	while(t > 0 && ans[t-1] == 0){
+		ans.pop_back();
+		t--;
+	}
+	if(ans.size() == 0) ans.push_back(0);
 }
