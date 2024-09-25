@@ -28,7 +28,7 @@ void fft(vector<cd> & a, int inv) {
     if (inv == -1) for (cd & x : a) x /= n;
 }
 
-vector<int> multiply(vector<int> const& a, vector<int> const& b) {
+vector<ll> multiply(vector<ll> const& a, vector<ll> const& b) {
     vector<cd> fa(a.begin(), a.end()), fb(b.begin(), b.end());
     int n = 1;
     while (n < a.size() + b.size() - 1)  n <<= 1;
@@ -38,7 +38,16 @@ vector<int> multiply(vector<int> const& a, vector<int> const& b) {
 	fore(i,0,n) fa[i] *= fb[i];
     fft(fa, -1);
 
-    vector<int> result(n);
+    vector<ll> result(n);
     for (int i = 0; i < n; i++) result[i] = round(fa[i].real());
     return result;
+}
+
+/* if it's numbers and not polynomials, we have to normalise */
+void normalise(vll &ans) {
+	for (ll i = 0, carry = 0; i < ans.size(); ++i) {
+		ans[i] += carry;
+		carry = ans[i] / 10;
+		ans[i] %= 10;
+	}
 }
