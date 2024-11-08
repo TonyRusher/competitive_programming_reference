@@ -1,7 +1,7 @@
 % compile this way
 % pdflatex -shell-escape reference.tex  
 
-\documentclass[11pt]{article}
+\documentclass[10pt]{article}
 \usepackage[utf8x]{inputenc}
 \usepackage[spanish]{babel}
 \decimalpoint
@@ -42,6 +42,7 @@
 \lhead{Reference}
 \rhead{\thepage}
 \lfoot{ESCOM-IPN}
+\rfoot{Tony Rusher}
 \renewcommand{\footrulewidth}{0.5pt}
 \setlength{\parskip}{0.5em}
 \newcommand{\ve}[1]{\overrightarrow{#1}}
@@ -78,28 +79,27 @@
 
 \begin{document}
 	% \begin{multicols*}{2}
-		
-
 			\section{Template}
 			\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{template.cpp}
 			\section{Data Structure}
 				\subsection{Segment tree with lazy}
 					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/SegmentTree.cpp}
+				\subsection{Segment tree Geometric sum}	
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/ST-geometricSum.cpp}
+				\subsection{Treap }	
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/treap.cpp}
+				\subsection{Implicit Treap}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/implicitTreap.cpp}
+				\subsection{Policy base }	
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/policyBase.cpp}
 				\subsection{SQRT and MO's}
 					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/sqrtDecom.cpp}
 				\subsection{Convex Hull Trick}
 					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/ConvexHullTrick.cpp}
-				\subsection{Field extension}
-					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/EX.cpp}
 				\subsection{BIT}
 					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/BIT.cpp}
 				\subsection{merge sort tree}
 					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/mergeSortTree.cpp}
-			\section{FFT}
-				\subsection{FFT}
-					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{FFT/FFT.cpp}
-				% \subsection{NTT}
-				% 	\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{FFT/NTT.cpp}
 			\section{Binary Search}
 				\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{algorithms/binarySearch.cpp}
 				\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{algorithms/ternarySearch.cpp}
@@ -108,20 +108,46 @@
 					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Flows/Dinic.cpp}
 				\subsubsection{Ford-Fulkerson}
 					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Flows/Ford-Fulkerson.cpp}
+				\subsubsection{maxflow mincost}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Flows/mincostMaxflow.cpp}
 			\section{Strings}
 				\subsection{aho-corasik}
 					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Strings/Aho-corasik.cpp}
 			\section{Math}
+				\subsection{FFT}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{FFT/FFT.cpp}
+				\subsection{NTT}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{FFT/NTT.cpp}
+				\subsection{Field extension}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/EX.cpp}
 				\subsection{nCr}
 					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Math/nCr.cpp}
 				\subsection{Discrete Root}
 					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Math/discreteRoot.cpp}
-					
-			% \inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/DinamicSegmentTree.cpp}
-			% \inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/simpleSegmentTree.cpp}
-			% \inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/FFT.cpp}
-			% \inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{DataStructures/NTT.cpp}
-			
+				\subsection{Miller Rabin}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Math/MillerRabin.cpp}
+			\section{Graphs}
+				\subsection{bfs-dfs}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Graph/bfs-dfs.cpp}
+				\subsection{cicles}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Graph/cicleAndBipartite.cpp}
+				\subsection{Dijkstra}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Graph/dijkstra.cpp}
+				\subsection{DSU}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Graph/DSU.cpp}
+				\subsection{FloydWarshall}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Graph/floydWarshall.cpp}
+				\subsection{Kruskal}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Graph/Kruskal.cpp}
+				\subsection{topoSort}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Graph/topoSort.cpp}
+			\section{Tree}
+				\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Graph/Tree.cpp}
+				\subsection{HLD}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Graph/HLD.cpp}
+			\section{Memorización}
+				\subsection{Knapsack}
+					\inputminted[tabsize=2,breaklines,fontsize=\small]{c++}{Memorizacion/Knapsack.cpp}
 		
 		
 	% \end{multicols*}

@@ -57,12 +57,14 @@ struct SQRT{
 	}
 };
 //MO's algorithm
+//arr 1 or 0 indexed, S = sqrt(n), index = index of the query
 ll answer, neutro = 0; vll arr;
 struct MOquery{
 	int l, r, index, S;
 	MOquery(int l, int r, int idx, int S): l(l), r(r), index(idx), S(S){}
 	bool operator<(const MOquery & q) const{
 		int bl = l / S, bq = q.l / S;
+		if(bl == bq && bl & 1) return r > q.r;//a little bit faster
 		if(bl == bq) return r < q.r;
 		return bl < bq;
 	}

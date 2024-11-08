@@ -18,7 +18,6 @@ vi toposortBFS(vvi &graph){
     if(cnt != n) return {-1};
     return ans;
 }
-
 void dfs(int curr, vector<bool> &visited, vector<vector<int>> &graph, vector<int> &ans){
     if(visited[curr]) return;
     visited[curr] = true;
@@ -26,7 +25,6 @@ void dfs(int curr, vector<bool> &visited, vector<vector<int>> &graph, vector<int
     ans.push_back(curr);
     return;
 }
-
 vector<int> toposort_dfs(vector<vector<int>> &graph){
     int n = graph.size();
     vector<bool> visited(n);

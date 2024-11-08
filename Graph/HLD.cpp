@@ -47,7 +47,6 @@ struct HeavyLightDecomp {
 		traversePath(u, v, [this, &ans, st](int l, int r){ans = max(ans, st->query(l,r));});
 		return ans;
 	}
-	
 	template <class DSType> void update(int u, ll val, DSType *st){
 		traversePath(u, u, [this, &val, st](int l, int r){st->update(l, val);});
 	}
