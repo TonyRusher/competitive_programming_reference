@@ -1,3 +1,5 @@
+//lower(x): primer elemento mayor o igual a x
+//upper(x): primer elemento mayor a x
 int lowerBound(vi &nums, int a) {
     int l = 0, r = nums.size() - 1;
     while(l <= r) {
