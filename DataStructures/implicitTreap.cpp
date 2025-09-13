@@ -85,7 +85,7 @@ Node *insert(Node *T, int x, int ind) {
 // returns a treap with all the elements in a
 Node *create(vi a) {
     Node *T = NULL;
-    forn(i, a.size()) T = insert(T, a[i], i + 1);
+    fore(i, a.size()) T = insert(T, a[i], i + 1);
     return T;
 }
 // erases the key x from the treap T

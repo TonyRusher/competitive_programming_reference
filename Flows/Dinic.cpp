@@ -1,3 +1,4 @@
+typedef vector<pii> vpii;
 typedef tuple<int, ll, ll> edge;
 class max_flow{
 	private:
@@ -22,14 +23,14 @@ class max_flow{
 			}
 			return d[t] != -1;
 		}
-		ll send_one_flow(int s, int t, ll f = inf){
-			if  ( s == t) return f;
-			auto &[u,idx] = p[t];
-			auto &cap = get<1>(EL[idx]), &flow = get<2>(EL[idx]);
-			ll pushed = send_one_flow(s, u, min(f, cap-flow));
-			flow += pushed;
-			return pushed;
-		}
+		// ll send_one_flow(int s, int t, ll f = inf){
+		// 	if  ( s == t) return f;
+		// 	auto &[u,idx] = p[t];
+		// 	auto &cap = get<1>(EL[idx]), &flow = get<2>(EL[idx]);
+		// 	ll pushed = send_one_flow(s, u, min(f, cap-flow));
+		// 	flow += pushed;
+		// 	return pushed;
+		// }
 		ll DFS(int u, int t, ll f = inf){
 			if( (u == t) || (f == 0)) return f;
 			for(int &i = last[u]; i < (int) AL[u].size(); ++i){
@@ -56,15 +57,15 @@ class max_flow{
 			EL.emplace_back(u, directed ? 0 : w, 0);
 			AL[v].pb(EL.size() - 1);
 		}
-		ll edmonds_karp(int s, int t){
-			ll mf = 0;
-			while( BFS(s,t)){
-				ll f = send_one_flow(s, t);
-				if ( f == 0)break;
-				mf += f;
-			}
-			return mf;
-		}
+		// ll edmonds_karp(int s, int t){
+		// 	ll mf = 0;
+		// 	while( BFS(s,t)){
+		// 		ll f = send_one_flow(s, t);
+		// 		if ( f == 0)break;
+		// 		mf += f;
+		// 	}
+		// 	return mf;
+		// }
 		ll dinic(int s, int t ){
 			ll mf = 0;
 			while( BFS(s,t)){
@@ -74,5 +75,32 @@ class max_flow{
 				}
 			}
 			return mf;
+		}
+		
+		vpii build(int s){
+			vi visited(V, 0);
+			dfs_ans(s, visited);
+			vpii ans;
+			//buscar aristas que van de un nodo u a uno v y cumplen alguna condicion
+			fore(u,0,V){
+				fore(j,0,AL[u].size()){
+					auto &[v, cap, flow] = EL[AL[u][j]];
+					if(cap == flow && visited[u] && !visited[v]){
+						ans.pb({u,v});
+					}
+				}
+			}
+			return ans;
+		}
+		//Realizar una dfs desde s en la red residual utilizando 
+		//sólo aristas no saturadas (con flujo menor a la capacidad).
+		void dfs_ans(int current, vi &visited){
+			visited[current] = 1;
+			// cout <<"entra " << current << endl;
+			for(auto idx: AL[current]){
+				auto &[v, cap, flow] = EL[idx];
+				if(!visited[v] && flow < cap)  dfs_ans(v, visited );
+			}
+			return;
 		}
 };

@@ -1,8 +1,8 @@
+//I C O N I C
 #include <bits/stdc++.h>
 
 #define endl '\n'
 #define ll long long int
-#define dl double
 #define ld long double
 #define ff __float128
 #define fore(i,a,b) for (int i = a; i < b; i++)
@@ -14,12 +14,12 @@
 
 using namespace std;
 
+typedef pair<int,int> pii;
+typedef pair<ll,ll> pll;
 typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef vector<ll> vll;
 typedef vector<vll> vvll;
-typedef pair<int,int> pii;
-typedef pair<ll,ll> pll;
 typedef vector<pll> vpll;
 
 const int inf = 1<<30;
