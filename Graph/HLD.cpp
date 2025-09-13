@@ -3,10 +3,13 @@ struct HeavyLightDecomp {
 	int n, root, idx;
 	vi level, size, head, pos, newVals;
 	vvi ancestros;
+	bool values_on_edges;
 
-	HeavyLightDecomp(int n, int root, vvi & adj, vi& vals):n(n), root(root), ancestros(21, vi(n+1,0)),level(n+1), size(n+1, 1), head(n+1), pos(n+1), newVals(1){
+	HeavyLightDecomp(int n, int root, vvi & adj, vi& vals, bool values_on_edges)
+		:n(n), root(root), ancestros(21, vi(n+1,0)),level(n+1), size(n+1, 1), head(n+1), pos(n+1), newVals(1){
 		dfs(root, root, adj);
-		idx = 1; hld(root, root, adj, vals);
+		idx = 1; 
+		hld(root, root, adj, vals);
 	}
 	void dfs(int curr, int father, vvi & adj) {
 		for (auto& next : adj[curr]) {
@@ -26,7 +29,6 @@ struct HeavyLightDecomp {
 			if(next == ancestros[0][curr])  continue;
 			if(size[next] > sz_heavy)
 				sz_heavy = size[next], heavy = next;
-			
 		}
 		if(heavy != -1) hld(heavy, nodeHead, adj, vals);
 		for(auto next: adj[curr])
@@ -40,14 +42,19 @@ struct HeavyLightDecomp {
 			op(pos[head[u]], pos[u]);
 		}
 		if(pos[u] > pos[v]) swap(u,v);
-		op(pos[u], pos[v]);
+		
+		int L = pos[u] + values_on_edges, R = pos[v];
+        if (L <= R) op(L, R);
 	}
 	template <class DSType> ll query(int u, int v, DSType *st){
-		int ans = -1;
-		traversePath(u, v, [this, &ans, st](int l, int r){ans = max(ans, st->query(l,r));});
+		int ans = Neutro_for_query;
+		traversePath(u, v, [this, &ans, st](int l, int r){ans = your_operation(ans, st->query(l,r));});
 		return ans;
 	}
-	template <class DSType> void update(int u, ll val, DSType *st){
-		traversePath(u, u, [this, &val, st](int l, int r){st->update(l, val);});
+	template <class DSType> void update(int u, int v, ll val, DSType *st){
+		traversePath(u, v, [this, &val, st](int l, int r){st->update(l,r, val);});
 	}
 };
+//HLD is 1 indexed
+//HeavyLightDecomp hld(n+1, 1, adj, values, 1);
+//SegmentTree<ll>* st = new SegmentTree<ll>(n+1, hld.newVals);
